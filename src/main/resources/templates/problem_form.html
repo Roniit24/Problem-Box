@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Your Sweet Thoughts ❤️</title>
+    <style>
+        /* Background & font */
+        body {
+            background: linear-gradient(135deg, #ffc6e8 0%, #ffc0cb 100%);
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #b30059; /* deep pink */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        /* Container */
+        .container {
+            background: #fff0f6;
+            border: 3px solid #ff66b2;
+            border-radius: 20px;
+            padding: 40px 50px;
+            max-width: 460px;
+            box-shadow: 0 10px 25px rgba(255, 102, 178, 0.35);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 15px 30px rgba(255, 102, 178, 0.6);
+        }
+        /* Heading */
+        h2 {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            color: #d1006c;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 4px #ff99cc;
+        }
+        /* Labels */
+        label {
+            display: block;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.15em;
+            color: #9e005d;
+        }
+        /* Inputs and textarea */
+        input[type="email"], textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2.5px solid #ff99cc;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #660033;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background: #fff7fb;
+        }
+        input[type="email"]:focus, textarea:focus {
+            border-color: #ff3399;
+            outline: none;
+            box-shadow: 0 0 12px #ff66b2cc;
+            background: #ffe6f5;
+        }
+        textarea {
+            resize: none;
+            min-height: 130px;
+            line-height: 1.5em;
+        }
+        /* Button */
+        button {
+            margin-top: 30px;
+            background: linear-gradient(45deg, #ff3399, #ff66b2);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px #ff4da6cc;
+            letter-spacing: 1.2px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #e60073, #ff3399);
+            box-shadow: 0 9px 30px #ff3399dd;
+        }
+        /* Heart animation */
+        .heart {
+            color: #ff3399;
+            font-size: 1.6em;
+            animation: heartbeat 1.3s infinite;
+            display: inline-block;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.4);
+            }
+        }
+        /* Responsive tweaks */
+        @media (max-width: 500px) {
+            .container {
+                padding: 30px 25px;
+                max-width: 90vw;
+            }
+            h2 {
+                font-size: 2.1em;
+            }
+            button {
+                font-size: 1.1em;
+                padding: 13px 28px;
+            }
+        }
+    </style>
+    <!-- Optional Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>MAHI'S THOUGHTS PORTAL <span class="heart">❤️</span></h2>
+        <form action="/submit" method="post">
+            <label for="email">Mahi's Email:</label>
+            <input type="email" id="email" name="email" placeholder="e.g. love@example.com" required>
+
+            <label for="message">Your Thoughts/Problem or Whatever in Mind?:</label>
+            <textarea id="message" name="message" placeholder="Pour your heart out here..." required></textarea>
+
+            <button type="submit">Send to Him <span class="heart">❤️</span></button>
+        </form>
+    </div>
+</body>
+</html>

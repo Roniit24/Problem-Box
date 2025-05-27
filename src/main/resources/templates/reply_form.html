@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Send a Reply</title>
+    <style>
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff5f8;
+            color: #5a0e55;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: #fff0f6;
+            border-radius: 12px;
+            padding: 25px 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 6px 15px rgba(194, 34, 109, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.9em;
+            color: #c21868;
+            text-align: center;
+            letter-spacing: 1.2px;
+            text-shadow: 1px 1px 3px #f7b2d9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+            color: #9c1f65;
+        }
+
+        input[type="email"],
+        textarea {
+            border: 2px solid #d6336c;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 1em;
+            color: #5a0e55;
+            background-color: #fff;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+        input[type="email"]:read-only {
+            background-color: #f9e8ef;
+            cursor: not-allowed;
+        }
+
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #c21868;
+            outline: none;
+        }
+
+        textarea[readonly] {
+            background-color: #f9e8ef;
+            cursor: not-allowed;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 14px;
+            background-color: #d6336c;
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+            border-radius: 28px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #a01e4d;
+            box-shadow: 0 5px 15px #a01e4daa;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            background-color: #c48aa0;
+            box-shadow: none;
+        }
+
+        /* Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        /* Responsive */
+        @media (max-width: 650px) {
+            .container {
+                padding: 20px 15px;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            input[type="email"],
+            textarea {
+                font-size: 0.95em;
+                padding: 10px 12px;
+            }
+            button {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Reply to: <span th:text="${problem.senderName}">User Name</span></h2>
+
+        <form id="replyForm" th:action="@{'/send-reply/' + ${problem.id}}" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:value="${problem.email}" readonly>
+
+            <label for="message" style="margin-top: 20px;">Original Message:</label>
+            <textarea id="message" rows="5" readonly th:text="${problem.message}">Original message here...</textarea>
+
+            <label for="replyMessage" style="margin-top: 20px;">Your Reply:</label>
+            <textarea id="replyMessage" name="replyMessage" rows="5" required placeholder="Type your reply here..."></textarea>
+
+            <button type="submit" id="sendBtn">
+                Send Reply
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('replyForm');
+        const sendBtn = document.getElementById('sendBtn');
+
+        form.addEventListener('submit', function(e) {
+            // Disable button to prevent multiple submits
+            sendBtn.disabled = true;
+
+            // Change button text and add spinner
+            sendBtn.innerHTML = 'Sending <span class="spinner"></span>';
+        });
+    </script>
+</body>
+</html>

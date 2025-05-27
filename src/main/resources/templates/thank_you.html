@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffc6e8 0%, #ffc0cb 100%);
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #b30059;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #d1006c;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 6px #ff99cc;
+        }
+        p {
+            font-size: 1.3em;
+            max-width: 450px;
+            color: #9e005d;
+            line-height: 1.6em;
+            font-weight: 600;
+        }
+        .heart {
+            color: #ff3399;
+            font-size: 1.8em;
+            animation: heartbeat 1.3s infinite;
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.4);
+            }
+        }
+        @media (max-width: 500px) {
+            h2 {
+                font-size: 2.2em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h2>Your message has been sent successfully! <span class="heart">❤️</span></h2>
+    <p>Thank you for sharing your thoughts.<br> He will get back to you soon.</p>
+</body>
+</html>
